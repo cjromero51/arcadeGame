@@ -2,10 +2,20 @@
 var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-
+    this.movementRate = function() {
+      max = 3
+      min = 1
+      rate = Math.random() * (max - min) + 1;
+      return Math.round(rate);
+    };
+    this.movement = function(this.movementRate) {
+      //some start point (row)
+      //some
+    };
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
+    allEnemies.push(this);
 };
 
 // Update the enemy's position, required method for game
@@ -27,10 +37,14 @@ Enemy.prototype.render = function() {
 class Player {
   constructor() {
     this.charImage = 'images/char-boy.png'
-    // this.update();
-    this.render()
+    this.update = function() {
+
+    }
+    this.render = function() {
+      ctx.drawImage(Resources.get(this.charImage));
+    }
     this.handleInput = function() {
-      if ()
+
     }
   }
 }
@@ -38,8 +52,9 @@ class Player {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-let allEnemies = [];
+let enemy = new Enemy();
 let player = new Player();
+let allEnemies = [];
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
