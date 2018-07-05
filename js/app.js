@@ -1,19 +1,13 @@
 // Enemies our player must avoid
+let allEnemies = [];
 var Enemy = function() {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
+
     this.movementRate = function() {
       max = 3
       min = 1
       rate = Math.random() * (max - min) + 1;
       return Math.round(rate);
     };
-    this.movement = function(this.movementRate) {
-      //some start point (row)
-      //some
-    };
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
     allEnemies.push(this);
 };
@@ -28,6 +22,25 @@ Enemy.prototype.update = function(dt) {
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
+  y = function() {
+    max = 4
+    min = 2
+    result = ((Math.round(Math.random() * (max - min + 1)) + min) * 101);
+    return result;
+  };
+  x = function movement() {
+    var position = 0;
+    var id = setInterval(xEnemy, ((Math.round(Math.random() * (max - min + 1)) + min) * 83));
+      function xEnemy() {
+        if (position == 505) {
+          clearInterval(id);
+          this.style.display = 'none';
+        } else {
+          pos++;
+          this.style.left = pos + 'px';
+        }
+      }
+    }
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
@@ -39,13 +52,14 @@ class Player {
     this.charImage = 'images/char-boy.png'
     this.update = function() {
 
-    }
+    };
     this.render = function() {
-      ctx.drawImage(Resources.get(this.charImage));
-    }
+      //figure out how to render the player in one square
+      // ctx.drawImage(Resources.get('images/char-boy.png', col * 101, row * 83));
+    };
     this.handleInput = function() {
 
-    }
+    };
   }
 }
 
@@ -54,7 +68,6 @@ class Player {
 // Place the player object in a variable called player
 let enemy = new Enemy();
 let player = new Player();
-let allEnemies = [];
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -68,3 +81,6 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+window.setInterval(enemy.render(), 5000)
+// window.setInterval(enemy, 2000);
+// const canvas = document.getElementById('canvas');
