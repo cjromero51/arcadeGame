@@ -22,13 +22,15 @@ Enemy.prototype.update = function(dt) {
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-  y = function() {
+  // set y
+  this.y = function yEnemy() {
     max = 4
     min = 2
     result = ((Math.round(Math.random() * (max - min + 1)) + min) * 101);
     return result;
   };
-  x = function movement() {
+  // set x
+  this.x = function movement() {
     var position = 0;
     var id = setInterval(xEnemy, ((Math.round(Math.random() * (max - min + 1)) + min) * 83));
       function xEnemy() {
@@ -36,12 +38,12 @@ Enemy.prototype.render = function() {
           clearInterval(id);
           this.style.display = 'none';
         } else {
-          pos++;
-          this.style.left = pos + 'px';
+          position++;
+          this.style.left = position + 'px';
         }
       }
     }
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    canvas.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 // Now write your own player class
