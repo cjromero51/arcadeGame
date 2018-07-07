@@ -1,13 +1,8 @@
 // Enemies our player must avoid
 let allEnemies = [];
 var Enemy = function() {
+  // set y
 
-    this.movementRate = function() {
-      max = 3
-      min = 1
-      rate = Math.random() * (max - min) + 1;
-      return Math.round(rate);
-    };
     this.sprite = 'images/enemy-bug.png';
     allEnemies.push(this);
 };
@@ -15,24 +10,10 @@ var Enemy = function() {
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
-};
-
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
-  // set y
-  this.y = function yEnemy() {
-    max = 4
-    min = 2
-    result = ((Math.round(Math.random() * (max - min + 1)) + min) * 101);
-    return result;
-  };
   // set x
-  this.x = function movement() {
+  xPosUpdate = function movement() {
     var position = 0;
-    var id = setInterval(xEnemy, ((Math.round(Math.random() * (max - min + 1)) + min) * 83));
+    var id = setInterval(xEnemy, ((Math.round(Math.random() * (max - min + 1)) + min) * 40));
       function xEnemy() {
         if (position == 505) {
           clearInterval(id);
@@ -43,7 +24,21 @@ Enemy.prototype.render = function() {
         }
       }
     }
-    canvas.drawImage(Resources.get(this.sprite), this.x, this.y);
+    // You should multiply any movement by the dt parameter
+    // which will ensure the game runs at the same speed for
+    // all computers.
+};
+
+// Draw the enemy on the screen, required method for game
+Enemy.prototype.render = function() {
+    var yArray = [60, 145, 230];
+    // yStart = function() {
+    //   yArray[Math.floor(Math.random() * yArray.length)];
+    // }
+    this.sprite = 'images/enemy-bug.png';
+    this.y = 60;
+    this.x = -100;
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 // Now write your own player class
@@ -56,8 +51,9 @@ class Player {
 
     };
     this.render = function() {
-      //figure out how to render the player in one square
-      // ctx.drawImage(Resources.get('images/char-boy.png', col * 101, row * 83));
+      this.x = 202;
+      this.y = 315;
+      ctx.drawImage(Resources.get(this.charImage), this.x, this.y);
     };
     this.handleInput = function() {
 
