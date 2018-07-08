@@ -1,44 +1,32 @@
 // Enemies our player must avoid
 let allEnemies = [];
 var Enemy = function() {
-  // set y
-
-    this.sprite = 'images/enemy-bug.png';
-    allEnemies.push(this);
+  this.sprite = 'images/enemy-bug.png';
+  this.x = -101;
+  this.y = 60
+  allEnemies.push(this);
 };
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-  // set x
-  xPosUpdate = function movement() {
-    var position = 0;
-    var id = setInterval(xEnemy, ((Math.round(Math.random() * (max - min + 1)) + min) * 40));
-      function xEnemy() {
-        if (position == 505) {
-          clearInterval(id);
-          this.style.display = 'none';
-        } else {
-          position++;
-          this.style.left = position + 'px';
-        }
-      }
-    }
+
+  this.x += 2;
+  return this.x*dt;
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
 };
-
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-    var yArray = [60, 145, 230];
-    // yStart = function() {
-    //   yArray[Math.floor(Math.random() * yArray.length)];
-    // }
-    this.sprite = 'images/enemy-bug.png';
-    this.y = 60;
-    this.x = -100;
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  const yArray = [60, 145, 230];
+
+  function nameless() {
+    this.y = yArray[Math.floor(Math.random() * yArray.length)];
+    return this.y;
+  };
+
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 // Now write your own player class
@@ -46,17 +34,16 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 class Player {
   constructor() {
+    this.x = 202;
+    this.y = 315;
     this.charImage = 'images/char-boy.png'
     this.update = function() {
 
     };
     this.render = function() {
-      this.x = 202;
-      this.y = 315;
       ctx.drawImage(Resources.get(this.charImage), this.x, this.y);
     };
     this.handleInput = function() {
-
     };
   }
 }
@@ -79,6 +66,3 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
-window.setInterval(enemy.render(), 5000)
-// window.setInterval(enemy, 2000);
-// const canvas = document.getElementById('canvas');
