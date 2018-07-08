@@ -6,14 +6,20 @@ var Enemy = function() {
   this.x = -101;
   this.y = yArray[Math.floor(Math.random() * yArray.length)];
   allEnemies.push(this);
+
 };
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-  const speedArray = [1,2,3,4];
-  this.x += 2;
-  return this.x*dt;
+  if (this.x < 505) {
+    this.x += 2;
+    return this.x*dt;
+  } else {
+    const yArray = [60, 145, 230];
+    this.y = yArray[Math.floor(Math.random() * yArray.length)];
+    this.x = -101;
+  }
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
