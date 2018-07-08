@@ -1,16 +1,17 @@
 // Enemies our player must avoid
 let allEnemies = [];
 var Enemy = function() {
+  const yArray = [60, 145, 230];
   this.sprite = 'images/enemy-bug.png';
   this.x = -101;
-  this.y = 60
+  this.y = yArray[Math.floor(Math.random() * yArray.length)];
   allEnemies.push(this);
 };
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-
+  const speedArray = [1,2,3,4];
   this.x += 2;
   return this.x*dt;
     // You should multiply any movement by the dt parameter
@@ -19,13 +20,6 @@ Enemy.prototype.update = function(dt) {
 };
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-  const yArray = [60, 145, 230];
-
-  function nameless() {
-    this.y = yArray[Math.floor(Math.random() * yArray.length)];
-    return this.y;
-  };
-
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
