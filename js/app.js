@@ -52,6 +52,12 @@ class Player {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 let enemy = new Enemy();
+let enemyOne = setTimeout(function() {new Enemy()}, 1000);
+let enemyTwo = setTimeout(function() {new Enemy()}, 5000);
+let enemyFour = setTimeout(function() {new Enemy()}, 13000);
+let enemyFive = setTimeout(function() {new Enemy()}, 3000);
+let enemySix = setTimeout(function() {new Enemy()}, 7000);
+let enemyEight = setTimeout(function() {new Enemy()}, 15000);
 let player = new Player();
 
 // This listens for key presses and sends the keys to your
