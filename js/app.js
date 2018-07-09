@@ -41,6 +41,7 @@ class Player {
       movementArray.push(kC);
     };
     this.update = function() {
+      //keeps player onscreen
       if (movementArray[0] == 37) {
         while (movementArray.length > 0) {
           movementArray.pop();
@@ -49,6 +50,7 @@ class Player {
         } else {
           return this.x -= 101;
       }};
+      //resets player to original position (reached water)
       if (movementArray[0] == 38) {
         while (movementArray.length > 0) {
           movementArray.pop();
@@ -57,6 +59,7 @@ class Player {
         } else {
           return this.y -= 85;
       }};
+      //keeps player on screen
       if (movementArray[0] == 39) {
         while (movementArray.length > 0) {
           movementArray.pop();
@@ -65,6 +68,7 @@ class Player {
         } else {
         return this.x += 101;
       }};
+      //keeps player on screen
       if (movementArray[0] == 40) {
         while (movementArray.length > 0) {
           movementArray.pop();
