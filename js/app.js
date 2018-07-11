@@ -7,26 +7,30 @@ var Enemy = function() {
   //inital coordinates for enemies
   this.x = -101;
   this.y = yArray[Math.floor(Math.random() * yArray.length)];
+
+  const speedArray = [2, 3, 4, 5];
+  speedFunction = function() {
+    return speedArray[Math.floor(Math.random() * speedArray.length)];
+  }
+  this.speed = speedFunction();
   allEnemies.push(this);
 
 };
 
 // fixed speed for enemies; once off-canvas this.x & this.y are regenerated
 Enemy.prototype.update = function(dt) {
-  collision = function() {
-
-  };
   if (this.x < 606) {
     if ((this.x+40 >= player.x && this.x-40 <= player.x) && this.y === player.y){
       player.x = 202;
       player.y = 315;
     };
-      this.x += 2;
+      this.x += this.speed;
       return this.x*dt;
   } else {
     const yArray = [60, 145, 230];
     this.y = yArray[Math.floor(Math.random() * yArray.length)];
     this.x = -101;
+    this.speed = speedFunction();
   }
 
 };
