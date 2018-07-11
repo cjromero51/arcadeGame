@@ -1,4 +1,7 @@
-
+window.onload = function() {
+  heart2.style.opacity = 0.2;
+  heart3.style.opacity = 0.2;
+}
 // Enemies our player must avoid
 var Enemy = function() {
   const yArray = [60, 145, 230];
@@ -22,6 +25,11 @@ Enemy.prototype.update = function(dt) {
     if ((this.x+40 >= player.x && this.x-40 <= player.x) && this.y === player.y){
       score = 0;
       scoreText.innerHTML = score;
+      if (heart3.style.opacity == 1) {
+        heart3.style.opacity = 0.2;
+      } else {
+        heart2.style.opacity = 0.2;
+      }
       player.x = 202;
       player.y = 315;
     };
@@ -79,6 +87,12 @@ class Player {
         } if (this.y < 100) {
           score += 50;
           scoreText.innerHTML = score;
+            if (heart2.style.opacity == 1) {
+              heart3.style.opacity = 1;
+            } else if (heart2.style.opacity = 0.2) {
+                heart2.style.opacity = 1.0;
+            }
+
           return this.y = 315, this.x = 202;
         } else {
           return this.y -= 85;
@@ -114,6 +128,9 @@ let enemySix = setTimeout(function() {new Enemy()}, 7000);
 let player = new Player();
 let score = 0;
 let scoreText = document.getElementById('score');
+let heart1 = document.getElementById('heart1');
+let heart2 = document.getElementById('heart2');
+let heart3 = document.getElementById('heart3');
 
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {

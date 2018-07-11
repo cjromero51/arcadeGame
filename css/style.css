@@ -1,3 +1,17 @@
+@font-face {
+font-family: "8-bit-wonder";
+src: url(8-bit-wonder-webfont.woff);
+}
+
 body {
     text-align: center;
+    font-family: "8-bit-wonder";
+    font-size:24px;
+}
+div {
+  padding-top: 20px;
+}
+#heart2,
+#heart3 {
+  opacity: .2;
 }
