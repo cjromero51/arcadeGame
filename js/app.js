@@ -1,6 +1,5 @@
+
 // Enemies our player must avoid
-
-
 var Enemy = function() {
   const yArray = [60, 145, 230];
   this.sprite = 'images/enemy-bug.png';
@@ -21,6 +20,8 @@ var Enemy = function() {
 Enemy.prototype.update = function(dt) {
   if (this.x < 606) {
     if ((this.x+40 >= player.x && this.x-40 <= player.x) && this.y === player.y){
+      score = 0;
+      scoreText.innerHTML = score;
       player.x = 202;
       player.y = 315;
     };
@@ -43,9 +44,17 @@ Enemy.prototype.render = function() {
 class Player {
   constructor() {
     const movementArray = [];
+    const selectedCharacter = document.getElementById("char-choices");
     this.x = 202;
     this.y = 315;
     this.charImage = 'images/char-boy.png';
+    // this.characterSelection = function() {
+    //   if (selectedCharacter.options[selectedCharacter.selectedIndex].value == 'boy'){
+    //     return this.charImage = 'image/char-boy.png';
+    //   } else if (selectedCharacter.options[selectedCharacter.selectedIndex].value == 'isaac') {
+    //     return this.charImage = 'images/isaac.png'
+    //   };
+    // };
     this.render = function() {
       ctx.drawImage(Resources.get(this.charImage), this.x, this.y);
     };
@@ -63,10 +72,13 @@ class Player {
           return this.x -= 101;
       }};
       //resets player to original position (reached water)
+
       if (movementArray[0] == 38) {
         while (movementArray.length > 0) {
           movementArray.pop();
         } if (this.y < 100) {
+          score += 50;
+          scoreText.innerHTML = score;
           return this.y = 315, this.x = 202;
         } else {
           return this.y -= 85;
@@ -100,6 +112,9 @@ let enemyFour = setTimeout(function() {new Enemy()}, 11000);
 let enemyFive = setTimeout(function() {new Enemy()}, 3000);
 let enemySix = setTimeout(function() {new Enemy()}, 7000);
 let player = new Player();
+let score = 0;
+let scoreText = document.getElementById('score');
+
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
