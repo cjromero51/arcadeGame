@@ -1,7 +1,7 @@
 window.onload = function() {
   heart2.style.opacity = 0.2;
   heart3.style.opacity = 0.2;
-}
+};
 // Enemies our player must avoid
 var Enemy = function() {
   const yArray = [60, 145, 230];
@@ -23,13 +23,15 @@ var Enemy = function() {
 Enemy.prototype.update = function(dt) {
   if (this.x < 606) {
     if ((this.x+40 >= player.x && this.x-40 <= player.x) && this.y === player.y){
-      score = 0;
-      scoreText.innerHTML = score;
       if (heart3.style.opacity == 1) {
         heart3.style.opacity = 0.2;
-      } else {
+      } else if (heart2.style.opacity == 1){
         heart2.style.opacity = 0.2;
-      }
+      } else {
+        heart1.style.opacity = 0.2;
+        score = 0;
+        scoreText.innerHTML = score;
+      };
       player.x = 202;
       player.y = 315;
     };
@@ -87,10 +89,12 @@ class Player {
         } if (this.y < 100) {
           score += 50;
           scoreText.innerHTML = score;
-            if (heart2.style.opacity == 1) {
+          if (heart1.style.opacity == 0.2) {
+              heart1.style.opacity = 1;
+          } else if (heart2.style.opacity == 0.2) {
+              heart2.style.opacity = 1;
+          } else {
               heart3.style.opacity = 1;
-            } else if (heart2.style.opacity = 0.2) {
-                heart2.style.opacity = 1.0;
             }
 
           return this.y = 315, this.x = 202;
@@ -131,6 +135,7 @@ let scoreText = document.getElementById('score');
 let heart1 = document.getElementById('heart1');
 let heart2 = document.getElementById('heart2');
 let heart3 = document.getElementById('heart3');
+let heartsArray = [heart1,heart2,heart3];
 
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
