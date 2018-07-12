@@ -6,7 +6,7 @@ The game can be cloned from GitHub with this [Address](https://github.com/cjrome
 ### How to Play
 Inside the arcadeGame folder, open the index.html file in a web browser of your choice.\
 The goal of the game is to have your character reach any of the water tiles as many times as possible.\
-#### Gameplay:
+### Gameplay:
 Use your *arrow keys* to move the character across the tiles, avoiding enemies along the way.
 ### Game Features
  - You start with 1 life, and gain 1 life and 50 points each time you reach the water (up to 3 lives).  Your character will automatically be reset back to the starting position.

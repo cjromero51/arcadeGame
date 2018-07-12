@@ -71,6 +71,7 @@ class Player {
         this.x = 202;
         this.y = 315;
         this.charImage = 'images/char-boy.png';
+        //draws player
         this.render = function() {
             ctx.drawImage(Resources.get(this.charImage), this.x, this.y);
         };
@@ -80,6 +81,7 @@ class Player {
                 movementArray.push(kC);
             }
         };
+        //limits player movement outside of canvas
         this.update = function() {
             //keeps player onscreen
             if (movementArray[0] == 37) {
@@ -97,6 +99,7 @@ class Player {
                 while (movementArray.length > 0) {
                     movementArray.pop();
                 }
+                //grants lives for successes and resets player to original position
                 if (this.y < 100) {
                     score += 50;
                     scoreText.innerHTML = score;
